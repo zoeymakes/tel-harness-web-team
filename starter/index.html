@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TEL Harness Web Team Starter</title>
+  <meta name="description" content="하네스 웹팀 실습용 숙소 검색/예약 페이지 스타터" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <nav class="topbar" aria-label="상단 메뉴">
+      <a class="brand" href="./index.html">StayFinder</a>
+      <span class="badge">Mock booking demo</span>
+    </nav>
+
+    <section class="hero-grid">
+      <div>
+        <p class="eyebrow">TEL Harness Web Team</p>
+        <h1>날짜와 인원에 맞는 숙소를 빠르게 비교하세요.</h1>
+        <p class="lead">실제 결제 없이, 검색·필터·숙소 카드 흐름을 확인하는 하네스 웹팀 실습용 페이지입니다.</p>
+      </div>
+
+      <form class="search-card" id="searchForm">
+        <label>
+          <span>지역</span>
+          <input name="region" value="제주" placeholder="예: 제주, 강릉, 부산" />
+        </label>
+        <label>
+          <span>체크인</span>
+          <input name="checkin" type="date" />
+        </label>
+        <label>
+          <span>인원</span>
+          <select name="guests">
+            <option>2명</option>
+            <option>3명</option>
+            <option>4명</option>
+          </select>
+        </label>
+        <button type="submit">예약 가능 숙소 보기</button>
+      </form>
+    </section>
+  </header>
+
+  <main>
+    <section class="filters" aria-label="숙소 필터">
+      <button class="filter active" data-type="all">전체</button>
+      <button class="filter" data-type="house">독채</button>
+      <button class="filter" data-type="hotel">호텔</button>
+      <button class="filter" data-type="pension">펜션</button>
+    </section>
+
+    <section class="summary" id="summary" aria-live="polite">제주 지역 mock 숙소 3개를 보여드릴게요.</section>
+
+    <section class="stay-grid" id="stayGrid" aria-label="숙소 목록">
+      <noscript>숙소 카드를 보려면 브라우저에서 JavaScript를 켜주세요.</noscript>
+    </section>
+  </main>
+
+  <footer>
+    <p>이 페이지는 TEL AI/AX 워크샵 실습용 mock demo입니다. 실제 예약과 결제는 연결되어 있지 않습니다.</p>
+  </footer>
+
+  <script src="./app.js"></script>
+</body>
+</html>
