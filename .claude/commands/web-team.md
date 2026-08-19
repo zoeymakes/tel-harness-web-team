@@ -1,50 +1,70 @@
-# /web-team
+---
+description: 하네스 웹팀(전문 서브에이전트 8명)을 가동해 숙소 검색/예약형 페이지를 만들거나 수정한다. 혼자 즉흥적으로 처리하지 않고 리서치→기획→설계→구현→QA 순서로 역할을 위임한다.
+argument-hint: [만들거나 수정할 내용]
+---
 
-숙소 검색/예약형 웹페이지를 만들거나 수정할 때 사용하는 팀 실행 명령입니다.
+# 하네스 웹팀 실행
 
-## 입력
+사용자 요청:
 
-사용자의 요청문을 그대로 받습니다. 요청이 짧으면 아래 항목을 먼저 정리합니다.
+$ARGUMENTS
 
-- 페이지 목적
-- 주 사용자
-- 반드시 필요한 기능
-- 이번 범위에서 제외할 것
-- 참고해야 할 디자인/카피 기준
+당신은 이 팀의 **오케스트레이터**입니다. 직접 역할극("~관점에서 보면...")을 하지 말고, 아래 단계마다 **Task(서브에이전트) 도구로 `.claude/agents/`의 해당 에이전트를 실제로 호출**해 결과를 받으세요. 서브에이전트는 대화 기록을 볼 수 없으므로, 위임할 때마다 사용자 요청 원문과 이전 단계의 핵심 결정을 프롬프트에 포함해야 합니다.
 
-## 실행 순서
+## 0단계 — 요청 정리 (오케스트레이터 직접)
 
-1. `business-researcher` 관점으로 사용자 불안과 비교 기준을 정리합니다.
-2. `product-planner` 관점으로 MVP 범위와 화면 우선순위를 정합니다.
-3. `ux-designer` 관점으로 검색, 필터, 카드, CTA 흐름을 설계합니다.
-4. `design-system-specialist` 관점으로 `references/airbnb-style-design.DESIGN.md`를 적용합니다.
-5. `copywriter` 관점으로 `references/toss-style-consumer-copy.md`를 적용합니다.
-6. `data-backend-architect` 관점으로 mock data 구조를 정리합니다.
-7. `frontend-builder` 관점으로 `starter/` 파일을 수정합니다.
-8. `qa-reviewer` 관점으로 `references/frontend-quality-standards.md`와 `.claude/skills/qa-check/SKILL.md`를 기준으로 검사합니다.
+- `references/travel-booking-product-brief.md`를 읽고 이번 요청이 MVP 범위 안인지 확인합니다.
+- 요청에서 목적, 주 사용자, 요구 기능, 제외할 것을 정리합니다. 요청이 비어 있으면 사용자에게 무엇을 만들지 물어봅니다.
+- **규모 판단**: 문구 한두 개 수정처럼 작은 요청이면 관련 에이전트만 씁니다(예: copywriter → frontend-builder → qa-reviewer). 페이지를 새로 만들거나 구조를 바꾸는 요청이면 전체 단계를 진행합니다. 단, **qa-reviewer 검수는 규모와 무관하게 생략하지 않습니다.**
 
-## 사용해야 하는 Skill
+## 1단계 — 분석·설계 (병렬 위임)
 
-- `.claude/skills/travel-page-builder/SKILL.md`
-- `.claude/skills/design-system-application/SKILL.md`
-- `.claude/skills/copy-review/SKILL.md`
-- `.claude/skills/qa-check/SKILL.md`
+아래 에이전트들은 모두 읽기 전용이므로 **하나의 메시지에서 병렬로 호출**합니다. 각 위임 프롬프트에 사용자 요청 원문을 포함합니다.
 
-## 완료 기준
+| 에이전트 | 받아올 것 |
+| --- | --- |
+| `business-researcher` | 사용자 불안·비교 기준·신뢰 신호 분석 |
+| `product-planner` | Must/Should/Won't 범위와 완료 기준 |
+| `ux-designer` | 검색→필터→카드→CTA 흐름과 상태(0건, 예약 불가) 설계 |
+| `design-system-specialist` | 토큰 기준 디자인 점검과 교정값 |
+| `copywriter` | 화면 문구 before/after 교정표 |
+| `data-backend-architect` | Supabase 이전 가능한 mock 스키마 |
 
-- `starter/index.html`을 브라우저에서 열었을 때 주요 흐름이 보입니다.
-- 검색 영역, 숙소 카드, 필터, 예약 가능 여부 CTA가 있습니다.
-- 문구가 어렵거나 번역투처럼 느껴지지 않습니다.
-- 모바일에서도 핵심 정보가 무너지지 않습니다.
-- `python3 scripts/check_repo.py`가 통과합니다.
+## 2단계 — 작업 지시서 종합 (오케스트레이터 직접)
 
-## 보고 형식
+여섯 결과를 하나의 작업 지시서로 합칩니다.
+
+- product-planner의 **Won't 목록이 최우선 규칙**입니다. 다른 역할의 제안이라도 Won't에 해당하면 제외하고, 제외 사실을 기록합니다.
+- 역할 간 충돌(예: 디자인 제안 vs 카피 제안)은 오케스트레이터가 판단해 결정하고 사유를 남깁니다.
+- 지시서 구성: ① 구현 항목(완료 기준 포함) ② 문구 교정표 ③ 데이터 스키마 ④ 디자인 교정값 ⑤ 하지 말 것
+
+## 3단계 — 구현 (frontend-builder 위임)
+
+`frontend-builder`에게 2단계 작업 지시서 전체를 프롬프트로 전달합니다. 파일 수정은 이 에이전트만 합니다. 오케스트레이터가 직접 starter/ 파일을 고치지 않습니다.
+
+## 4단계 — 검수 (qa-reviewer 위임)
+
+`qa-reviewer`에게 **이번 작업의 요구사항 목록**(2단계 지시서의 구현 항목)을 프롬프트에 포함해 위임합니다.
+
+- 판정이 "수정 필요"면: 수정 필요 항목만 추려 `frontend-builder`에 재위임 → 다시 `qa-reviewer` 검수. **이 루프는 최대 2회**까지만 반복하고, 그래도 남는 항목은 보고서의 "남은 확인 질문"에 기록합니다.
+- 판정이 "통과"면 5단계로 갑니다.
+
+## 5단계 — 최종 보고 (오케스트레이터 직접)
+
+CLAUDE.md의 보고 형식을 따르되, 팀 가동 내역을 포함합니다.
 
 ```txt
 완료:
 - 바꾼 파일:
-- 적용한 역할:
-- 적용한 기준:
-- 확인한 것:
-- 다음에 피드백받을 지점:
+- 가동한 에이전트와 핵심 기여: (에이전트별 1줄)
+- 적용한 기준: (참고한 references/skills)
+- 실행한 검사: (check_repo.py 결과, QA 판정)
+- 범위에서 제외한 것(Won't):
+- 남은 확인 질문:
 ```
+
+## 금지 사항
+
+- 서브에이전트를 호출하지 않고 "각 관점을 고려했다"고만 말하는 것
+- qa-reviewer 통과 전에 "완료"라고 보고하는 것
+- Won't 항목을 사용자 몰래 구현하거나 몰래 빼는 것

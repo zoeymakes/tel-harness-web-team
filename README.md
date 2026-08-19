@@ -48,6 +48,7 @@ tel-harness-web-team/
       design-system-application/SKILL.md
       copy-review/SKILL.md
       qa-check/SKILL.md
+      mock-data-modeling/SKILL.md
     rules/
       product-quality-bar.md
       frontend-quality-standards.md
@@ -84,9 +85,9 @@ python3 -m http.server 4173 -d starter
 ## 실습 포인트
 
 - `CLAUDE.md`: AI가 프로젝트를 시작할 때 읽는 기본 작업 설명서
-- `.claude/commands/web-team.md`: 여러 역할을 어떤 순서로 호출할지 적은 명령
-- `.claude/agents/*.md`: 리서치, 기획, UX, 디자인, 구현, QA 역할 분리
-- `.claude/skills/*/SKILL.md`: 반복 절차와 검토 기준
+- `.claude/commands/web-team.md`: 서브에이전트들을 어떤 순서로 실제 호출(위임)할지 적은 오케스트레이션 명령
+- `.claude/agents/*.md`: 리서치, 기획, UX, 디자인, 구현, QA 서브에이전트. YAML frontmatter(`name`, `description`, `tools`)로 역할·위임 조건·도구 권한을 정의하고, 본문이 각 에이전트의 시스템 프롬프트가 됩니다
+- `.claude/skills/*/SKILL.md`: 반복 절차와 검토 기준. 에이전트 frontmatter의 `skills:` 필드로 해당 역할에 미리 로드됩니다
 - `references/*`: AI가 참고할 디자인/카피/품질 기준
 - `starter/*`: 실제로 수정하며 결과를 확인하는 정적 웹페이지
 
