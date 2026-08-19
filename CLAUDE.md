@@ -1,6 +1,6 @@
 # TEL Harness Web Team Operating Guide
 
-이 저장소는 TEL AI/AX 워크샵에서 하네스 웹팀과 Work Wiki를 실습하기 위한 예제입니다.
+이 저장소는 TEL AI/AX 워크샵에서 하네스 웹팀을 실습하기 위한 예제입니다.
 
 ## 기본 목표
 
@@ -19,13 +19,12 @@
 - 기본 작업 대상: `starter/index.html`, `starter/styles.css`, `starter/app.js`
 - 참고 자료: `references/`
 - 하네스 설정: `.claude/`
-- 지식 기록: `work-wiki/`
+- Work Wiki 실습은 별도 저장소 `tel-work-wiki-example`에서 진행합니다.
 
 ## 하지 말 것
 
 - 사용자가 요청하지 않은 프레임워크 설치를 하지 않습니다.
 - API 키, 토큰, 개인정보를 파일에 넣지 않습니다.
-- `work-wiki/10_sources/`의 원본 자료를 임의로 삭제하지 않습니다.
 - 근거 없는 내용을 확정 표현으로 쓰지 않습니다.
 - 디자인을 과하게 꾸미느라 사용 목적을 흐리지 않습니다.
 

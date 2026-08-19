@@ -24,8 +24,6 @@ required = [
     'starter/index.html',
     'starter/styles.css',
     'starter/app.js',
-    'work-wiki/SCHEMA.md',
-    'work-wiki/CLAUDE.md',
 ]
 missing = [p for p in required if not (ROOT / p).exists()]
 if missing:

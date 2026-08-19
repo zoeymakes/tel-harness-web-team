@@ -1,8 +1,10 @@
 # TEL Harness Web Team
 
-Claude Code에서 **하네스 웹팀**과 **Work Wiki** 구조를 직접 실습해보는 예제 저장소입니다.
+Claude Code에서 **하네스 웹팀** 구조를 직접 실습해보는 예제 저장소입니다.
 
-이 저장소는 완성된 서비스가 아니라, AI에게 일을 맡기는 구조를 눈으로 보고 바꿔보기 위한 실습 키트입니다.
+이 저장소는 완성된 서비스가 아니라, AI에게 웹페이지 제작을 맡길 때 역할·기준·검수 흐름을 프로젝트 안에 어떻게 넣는지 눈으로 보고 바꿔보기 위한 실습 키트입니다.
+
+> Work Wiki 실습은 별도 저장소로 분리했습니다: https://github.com/zoeymakes/tel-work-wiki-example
 
 ## 1분 시작
 
@@ -61,18 +63,6 @@ tel-harness-web-team/
     index.html
     styles.css
     app.js
-
-  work-wiki/
-    SCHEMA.md
-    CLAUDE.md
-    00_inbox/
-    10_sources/
-    20_concepts/
-    30_entities/
-    40_projects/
-    50_playbooks/
-    60_questions/
-    70_briefings/
 ```
 
 ## 화면 확인
@@ -98,12 +88,15 @@ python3 -m http.server 4173 -d starter
 - `.claude/agents/*.md`: 리서치, 기획, UX, 디자인, 구현, QA 역할 분리
 - `.claude/skills/*/SKILL.md`: 반복 절차와 검토 기준
 - `references/*`: AI가 참고할 디자인/카피/품질 기준
-- `work-wiki/*`: 작업 중 생긴 지식을 다시 꺼내 쓰기 위한 구조
+- `starter/*`: 실제로 수정하며 결과를 확인하는 정적 웹페이지
 
 ## 피드백할 때 보면 좋은 것
 
 1. `/web-team`이 실제로 여러 역할을 잘 따라가는지
 2. Claude가 references와 skills를 충분히 읽는지
 3. `starter/` 결과물이 너무 과하거나 어려운지
-4. Work Wiki 구조가 실제 업무 메모를 넣기에 편한지
-5. 어떤 설명이 비개발자에게 막히는지
+4. 어떤 설명이 비개발자에게 막히는지
+
+## 함께 쓰는 예제 저장소
+
+- Work Wiki 예제: https://github.com/zoeymakes/tel-work-wiki-example
