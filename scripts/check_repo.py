@@ -15,7 +15,8 @@ AGENTS = [
 ]
 
 SKILLS = [
-    '.claude/skills/travel-page-builder/SKILL.md',
+    '.claude/skills/web-team/SKILL.md',
+    '.claude/skills/static-page-builder/SKILL.md',
     '.claude/skills/design-system-application/SKILL.md',
     '.claude/skills/copy-review/SKILL.md',
     '.claude/skills/qa-check/SKILL.md',
@@ -24,14 +25,12 @@ SKILLS = [
 
 OTHER = [
     'CLAUDE.md',
-    '.claude/commands/web-team.md',
-    'references/airbnb-style-design.DESIGN.md',
-    'references/toss-style-consumer-copy.md',
-    'references/travel-booking-product-brief.md',
+    'references/design-tokens.md',
+    'references/copy-principles.md',
     'references/frontend-quality-standards.md',
-    'starter/index.html',
-    'starter/styles.css',
-    'starter/app.js',
+    'site/index.html',
+    'site/styles.css',
+    'site/app.js',
 ]
 
 errors = []
@@ -40,6 +39,11 @@ errors = []
 for p in AGENTS + SKILLS + OTHER:
     if not (ROOT / p).exists():
         errors.append(f'파일 없음: {p}')
+
+# 2. 브리프 폴더 확인 (예시 브리프 최소 1개)
+briefs_dir = ROOT / 'references/briefs'
+if not briefs_dir.is_dir() or not list(briefs_dir.glob('*.md')):
+    errors.append('references/briefs/ 에 브리프(.md)가 최소 1개 있어야 합니다 (예시: travel-booking.md)')
 
 
 def parse_frontmatter(path):
@@ -57,7 +61,7 @@ def parse_frontmatter(path):
     return None  # 닫는 '---' 없음
 
 
-# 2. 서브에이전트 frontmatter 확인 (name, description 필수)
+# 3. 서브에이전트 frontmatter 확인 (name, description 필수)
 for p in AGENTS:
     path = ROOT / p
     if not path.exists():
@@ -73,7 +77,7 @@ for p in AGENTS:
     if fm.get('name') and fm['name'] != expected:
         errors.append(f'name({fm["name"]})이 파일명({expected})과 다름: {p}')
 
-# 3. 스킬 frontmatter 확인 (description 권장 → 이 실습에서는 필수로 검사)
+# 4. 스킬 frontmatter 확인 (description 권장 → 이 실습에서는 필수로 검사)
 for p in SKILLS:
     path = ROOT / p
     if not path.exists():
@@ -85,8 +89,8 @@ for p in SKILLS:
     if not fm.get('description'):
         errors.append(f'frontmatter에 description 없음 (자동 로드 불가): {p}')
 
-# 4. starter 페이지 참조 확인
-html_path = ROOT / 'starter/index.html'
+# 5. site 페이지 참조 확인
+html_path = ROOT / 'site/index.html'
 if html_path.exists():
     html = html_path.read_text(encoding='utf-8')
     for ref in ['./styles.css', './app.js']:

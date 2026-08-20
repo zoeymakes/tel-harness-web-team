@@ -1,0 +1,28 @@
+/* 하네스 웹팀 산출물 스타일시트 — 팀 가동 전에는 안내 화면만 있습니다. */
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  font-family: "Apple SD Gothic Neo", "Pretendard", sans-serif;
+  background: #fffaf7;
+  color: #1f2933;
+}
+
+.empty-canvas {
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+  gap: 16px;
+  padding: 24px;
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.empty-canvas code {
+  background: #fff1e8;
+  padding: 2px 8px;
+  border-radius: 6px;
+}
