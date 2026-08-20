@@ -435,6 +435,25 @@ If Airbnb Cereal VF and Circular are unavailable, **Inter** is the closest open-
 ### Whitespace Philosophy
 The system gives editorial bands 64px of vertical breathing room but compresses card grids — property and city-link cards sit just 16px apart. The contrast is intentional: the page reads as "open hero, dense marketplace below," reinforcing the marketplace nature without overwhelming the visitor at the fold.
 
+## Composition (첫 화면 구성 — 관찰 가능한 판정 기준)
+
+토큰을 다 지켜도 구성이 다르면 이 시스템처럼 보이지 않습니다. 아래는 스크린샷에서 눈으로 판정할 수 있는 기준이며, **구현과 비주얼 QA 양쪽의 합격선**입니다.
+
+### Above the fold (데스크톱 1440×900, 스크롤 0)
+- 위에서 아래로: 상단 네비(80px) → 검색 pill(64px, 1줄) → 카테고리/필터 스트립(얇은 1줄) → **숙소 카드 그리드 첫 줄**. 이 네 층이 모두 첫 화면 안에 보여야 합니다.
+- 컨트롤(검색 + 필터)의 세로 합이 첫 화면의 절반을 넘으면 실패입니다. 이 시스템의 검색은 pill 한 줄이지, 폼 패널이 아닙니다.
+- 필터는 카드 위의 **얇은 가로 칩 스트립**입니다. 보더 박스로 감싼 필터 패널·사이드바는 이 시스템에 존재하지 않습니다.
+- 첫 화면 면적의 40% 이상을 **카드 사진(이미지)**이 차지해야 합니다. "사진이 시각적 무게를 담당한다"의 관찰 가능한 형태입니다.
+
+### 카드 그리드
+- 데스크톱 4열 이상, 카드 간 16~24px. 카드가 3열 이하로 성기면 마켓플레이스 밀도가 무너집니다.
+- 카드 높이의 55% 이상이 사진 플레이트입니다. 사진 아래 메타는 4~5줄로 압축합니다.
+- 사진 플레이트는 실제 장면(사진 또는 그에 준하는 일러스트)이어야 합니다. 단색·그라디언트 사각형은 이 시스템의 어떤 화면에도 없습니다.
+
+### 페이지 리듬
+- "열린 히어로, 촘촘한 마켓플레이스": 히어로·편집 밴드는 64px 여백으로 느슨하게, 카드 그리드는 16px 간격으로 촘촘하게. 이 대비가 사라지면 어느 쪽으로든 실패입니다.
+- 텍스트·보더가 화면을 지배하면 안 됩니다. 화면의 주인공은 항상 사진이고, 타이포는 조용하며(28px/700이 최대), Rausch는 한 화면에 한두 점입니다.
+
 ## Elevation
 
 The system has essentially **one shadow tier** plus the flat baseline.

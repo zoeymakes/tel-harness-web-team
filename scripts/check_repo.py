@@ -12,15 +12,18 @@ AGENTS = [
     '.claude/agents/frontend-builder.md',
     '.claude/agents/data-backend-architect.md',
     '.claude/agents/qa-reviewer.md',
+    '.claude/agents/visual-qa.md',
 ]
 
 SKILLS = [
     '.claude/skills/web-team/SKILL.md',
+    '.claude/skills/web-team-demo/SKILL.md',
     '.claude/skills/static-page-builder/SKILL.md',
     '.claude/skills/design-system-application/SKILL.md',
     '.claude/skills/copy-review/SKILL.md',
     '.claude/skills/qa-check/SKILL.md',
     '.claude/skills/mock-data-modeling/SKILL.md',
+    '.claude/skills/visual-review/SKILL.md',
 ]
 
 OTHER = [
