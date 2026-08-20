@@ -25,7 +25,7 @@ SKILLS = [
 
 OTHER = [
     'CLAUDE.md',
-    'references/design-tokens.md',
+    'references/design-system.md',
     'references/copy-principles.md',
     'references/frontend-quality-standards.md',
     'site/index.html',

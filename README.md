@@ -56,7 +56,7 @@ tel-harness-web-team/
   references/
     briefs/
       travel-booking.md    ← 예시 브리프 (새 프로젝트마다 여기에 브리프가 추가됨)
-    design-tokens.md       ← 기본 디자인 토큰 (브리프에서 오버라이드 가능)
+    design-system.md       ← 기본 디자인 토큰 (브리프에서 오버라이드 가능)
     copy-principles.md     ← 기본 문구 기준
     frontend-quality-standards.md
 

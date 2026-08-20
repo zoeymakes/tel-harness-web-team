@@ -30,7 +30,7 @@ skills:
 - JS가 실패해도 최소한의 안내가 보이도록 `<noscript>`와 정적 기본 문구를 둡니다.
 
 **CSS**
-- 색·radius·그림자·여백은 `:root`의 CSS 변수로만 씁니다. 값은 지시서의 토큰(기본: `references/design-tokens.md`, 브리프 오버라이드 우선)을 따릅니다.
+- 색·radius·그림자·여백은 `:root`의 CSS 변수로만 씁니다. 값은 지시서의 토큰(기본: `references/design-system.md`, 브리프 오버라이드 우선)을 따릅니다.
 - 반응형 브레이크포인트는 860px(중간)과 720px 이하(모바일) 기준: 입력 영역 세로 배치, 카드 1열, 버튼 최소 높이 44px.
 
 **JS**

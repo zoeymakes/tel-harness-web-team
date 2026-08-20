@@ -17,7 +17,7 @@ tel-harness-web-team/
 │   └── rules/                 ← 항상 적용되는 품질·카피 원칙 3개
 ├── references/
 │   ├── briefs/                ← 프로젝트별 브리프 (범위의 최종 근거, 요청마다 생성)
-│   ├── design-tokens.md       ← 기본 디자인 토큰 (브리프에서 오버라이드 가능)
+│   ├── design-system.md       ← 기본 디자인 토큰 (브리프에서 오버라이드 가능)
 │   ├── copy-principles.md     ← 기본 문구 기준
 │   └── frontend-quality-standards.md
 ├── site/                      ← 팀의 산출물 캔버스 (index.html, styles.css, app.js)
@@ -79,7 +79,7 @@ tel-harness-web-team/
 | 문서 | 역할 |
 | --- | --- |
 | `briefs/*.md` | 프로젝트별 목적·사용자·핵심 흐름·포함/제외 — **범위의 최종 근거**. 신규 요청이면 오케스트레이터가 0단계에서 생성 |
-| `design-tokens.md` | 기본 디자인 토큰(색·radius·shadow·spacing)과 UI 원칙. 브리프의 "디자인 방향"이 있으면 그쪽 우선 |
+| `design-system.md` | 기본 디자인 레퍼런스(토큰·타이포·컴포넌트·레이아웃). **이 파일을 다른 디자인 시스템 문서로 교체하면 팀의 스타일이 통째로 바뀝니다.** 브리프의 "디자인 방향"이 있으면 그쪽 우선 |
 | `copy-principles.md` | 기본 문구 원칙, 버튼 문구 규칙, 금지 표현 |
 | `frontend-quality-standards.md` | 정적 페이지·반응형 구현 기준 |
 

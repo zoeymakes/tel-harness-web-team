@@ -40,7 +40,7 @@
 
 ## 디자인 방향 (선택)
 
-`references/design-tokens.md`의 기본 토큰을 그대로 사용합니다. (따뜻한 배경, 코랄 primary — 여행 서비스 톤에 적합)
+`references/design-system.md`의 기본 토큰을 그대로 사용합니다. (따뜻한 배경, 코랄 primary — 여행 서비스 톤에 적합)
 
 ## 데이터 방향 (선택)
 
